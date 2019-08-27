@@ -93,4 +93,4 @@ done
 #echo Restart! >> surv.log
 #pkill node.sh
 #pkill harmony
-#sudo ./startone.sh
+#sudo ./hnodestart.sh
