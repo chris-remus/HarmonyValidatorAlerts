@@ -4,6 +4,7 @@
 # After three loops of alerts per email and/or sms the script exits and restarts the node
 # The current setup is configured for both email and sms. If you want to use only email, then the lines with phone number, textbeltkey and
 # curl -X POST https://textbelt.com/text --data-urlencode ... need to be commented 
+# Also you could use the script only in the alert mode without node restart -> for this comment the lines after "# At exit write log and restart the node"
 
 # Edit these parameters:
 # Wallet address
