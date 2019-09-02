@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# This script checks the change in balance on all 4 shards and alerts via email or SMS if balance not growing
-# After three loops of alerts the script exits and restarts the node
+# This script checks the change in balance on all 4 shards and alerts via email or SMS if the balance is not growing
+# After three loops of alerts per email and/or sms the script exits and restarts the node
+# The current setup is configured for both email and sms. If you want to use only email, then the lines with phone number, textbeltkey and
+# curl -X POST https://textbelt.com/text --data-urlencode ... need to be commented 
 
 # Edit these parameters:
 # Wallet address
@@ -12,7 +14,9 @@ emailaddress=email address to send the alerts
 phonenumber=phone number to send the alerts
 # Textbelt key
 textbeltkey=textbelt key that you will need to have first
-# Delay between checks (E.g. 40s = 40 sec, 2m = 2 min, 1h = 1 hour)
+# Delay between checks (E.g. 40s = 40 sec, 2m = 2 min, 1h = 1 hour) It is important to adjust this over time. As the number of joining 
+# nodes increases over time, the time between the rewards received will increase as the whole ONE amount will be distributed over more nodes than before.
+# If the interval check is too small then false alerts could happen. 
 check=50s
 # Delay before re-sending the alert
 alert=2m
@@ -81,7 +85,7 @@ do
    # Exit inner loop if balance not changed
   date >> surv.log
   echo No rewards! >> surv.log
-  # curl -X POST https://textbelt.com/text --data-urlencode phone=''$phonenumber'' --data-urlencode message='ONE rewards missing' -d key=$textbeltkey
+  curl -X POST https://textbelt.com/text --data-urlencode phone=''$phonenumber'' --data-urlencode message='ONE rewards missing' -d key=$textbeltkey
   ssmtp $emailaddress < one-alert.txt
   sleep $alert
   emails=$(($emails + 1))
