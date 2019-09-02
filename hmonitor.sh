@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script checks the change in balance and alerts via email or SMS if balance not growing
+# This script checks the change in balance on all 4 shards and alerts via email or SMS if balance not growing
 # After three loops of alerts the script exits and restarts the node
 
 # Edit these parameters:
@@ -11,7 +11,7 @@ emailaddress=email address to send the alerts
 #Phone number
 phonenumber=phone number to send the alerts
 # Textbelt key
-textbeltkey=textbelt key that you need to get
+textbeltkey=textbelt key that you will need to have first
 # Delay between checks (E.g. 40s = 40 sec, 2m = 2 min, 1h = 1 hour)
 check=50s
 # Delay before re-sending the alert
@@ -89,8 +89,8 @@ do
 done
 
 # At exit write log and restart the node
-#date >> surv.log
-#echo Restart! >> surv.log
-#pkill node.sh
-#pkill harmony
-#sudo ./hnodestart.sh
+date >> hmonitor.log
+echo Restart! >> hmonitor.log
+pkill node.sh
+pkill harmony
+sudo ./hnodestart.sh
