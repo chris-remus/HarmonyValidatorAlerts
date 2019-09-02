@@ -14,7 +14,7 @@ emailaddress=email address to send the alerts
 #Phone number
 phonenumber=phone number to send the alerts
 # Textbelt key
-textbeltkey=textbelt key that you will need to have first
+textbeltkey=textbelt key which you own
 # Delay between checks (E.g. 40s = 40 sec, 2m = 2 min, 1h = 1 hour) It is important to adjust this over time. As the number of joining 
 # nodes increases over time, the time between the rewards received will increase as the whole ONE amount will be distributed over more nodes than before.
 # If the interval check is too small then false alerts could happen. 
