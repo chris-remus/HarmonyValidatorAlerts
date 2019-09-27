@@ -10,7 +10,7 @@
 # Wallet address
 wallet=one address 
 # Email address
-emailaddress=email address to send the alerts
+#emailaddress=email address to send the alerts
 #Phone number
 phonenumber=phone number to send the alerts
 # Textbelt key
@@ -22,7 +22,7 @@ check=50s
 # Delay before re-sending the alert
 alert=2m
 # Preset the email counter
-emails=0
+# emails=0
 # Main loop
 while [[ $emails -le 2 ]]
 do
@@ -87,9 +87,9 @@ do
   date >> surv.log
   echo No rewards! >> surv.log
   curl -X POST https://textbelt.com/text --data-urlencode phone=''$phonenumber'' --data-urlencode message='ONE rewards missing' -d key=$textbeltkey
-  ssmtp $emailaddress < one-alert.txt
+  # ssmtp $emailaddress < one-alert.txt
   sleep $alert
-  emails=$(($emails + 1))
+  # emails=$(($emails + 1))
 
 done
 
@@ -98,4 +98,5 @@ date >> hmonitor.log
 echo Restart! >> hmonitor.log
 pkill node.sh
 pkill harmony
-sudo ./hnodestart.sh
+# sudo ./hnodestart.sh
+# /usr/bin/sudo /home/chainharmony01/harmony/node.sh -k /home/chainharmony01/harmony/c11fe53327a8d6e5453351e519504a3f02685b5b50903fe018e8d26ca79ba49e08eb5e7fd8955170fbabce0db5860819.key -p /home/chainharmony01/harmony/info.file
